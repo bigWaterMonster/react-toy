@@ -1,6 +1,11 @@
 import React from 'react'
+import Layout from 'views/components/Layout'
 
 function Money() {
-  return <div>Money</div>
+  return (
+    <Layout>
+      <div>Money</div>
+    </Layout>
+  )
 }
 export default Money

@@ -1,6 +1,11 @@
 import React from 'react'
+import Layout from 'views/components/Layout'
 
 function Labels() {
-  return <div>Labels</div>
+  return (
+    <Layout>
+      <div>Labels</div>
+    </Layout>
+  )
 }
 export default Labels
