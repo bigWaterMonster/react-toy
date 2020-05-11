@@ -22,13 +22,18 @@ a {
   color: inherit;
 }
 
- body {
-  font-family:  $font-hei;
+body {
+  font-family: $font-hei;
   font-size: 16px;
   line-height: 1.2;
- }
+  background: #f5f5f5;
+}
 
- .icon {
-  width: 1.2em;
-  height: 1.2em;
- }
+button {
+  font-family: inherit;
+}
+
+.icon {
+width: 1.2em;
+height: 1.2em;
+}

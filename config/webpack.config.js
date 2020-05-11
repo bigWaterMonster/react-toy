@@ -358,7 +358,11 @@ module.exports = function(webpackEnv) {
                 },
                 {
                   loader: 'svgo-loader',
-                  options: {}
+                  options: {
+                    plugins: [
+                      { removeAttrs: { attrs: 'fill' } }
+                    ]
+                  }
                 }
               ]
             },

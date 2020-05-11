@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styled from "styled-components";
 import SvgIcon from './SvgIcon'
 
@@ -18,6 +18,12 @@ const NavX = styled.nav`
         width: 24px;
         height: 24px;
       }
+      .active {
+        color: red;
+        .icon {
+          fill: red;
+        }
+      }
     }
   }
 `
@@ -27,22 +33,22 @@ function Nav() {
     <NavX>
       <ul>
         <li>
-          <Link to="/money">
+          <NavLink to="/money" activeClassName="active">
             <SvgIcon name="money"/>
             <p>记账</p>
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/labels">
+          <NavLink to="/labels" activeClassName="active">
             <SvgIcon name="tag"/>
             <p>标签</p>
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/statistics">
+          <NavLink to="/statistics" activeClassName="active">
             <SvgIcon name="statistics"/>
             <p>统计</p>
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </NavX>
