@@ -1,16 +1,12 @@
 import React from "react";
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect
-} from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Money from './views/money/Money'
 import Labels from './views/labels/Labels'
 import Statistics from './views/statistics/Statistics'
 import NoMatch from './views/NoMatch'
-import styled from "styled-components";
+import Nav from './views/components/Nav'
+import styled from "styled-components"
+
 
 const Wrapper = styled.div`
   border: 1px solid red;
@@ -25,16 +21,7 @@ const Main = styled.div`
   overflow: auto;
 `
 
-const Nav = styled.nav`
-  >ul {
-    text-align: center;
-    display: flex;
-    > li {
-      flex-grow: 1;
-      padding: 16px;
-    }
-  }
-`
+
 
 function App() {
   return (
@@ -55,19 +42,7 @@ function App() {
             </Route>
           </Switch>
         </Main>
-        <Nav>
-          <ul>
-            <li>
-              <Link to="/money">记账</Link>
-            </li>
-            <li>
-              <Link to="/labels">标签</Link>
-            </li>
-            <li>
-              <Link to="/statistics">统计</Link>
-            </li>
-          </ul>
-        </Nav>
+        <Nav/>
       </Wrapper>
     </Router>
   );
