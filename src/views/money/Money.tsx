@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from 'views/components/Layout'
 import styled from 'styled-components'
 
@@ -27,10 +27,47 @@ const TagsSection = styled.section`
 `
 
 const NotesSection = styled.section`
-
+  background: #f5f5f5;
+  padding: 0 16px;
+  font-size: 14px;
+  >label {
+    display: flex;
+    align-items: center;
+    >span {
+      margin-right: 16px;
+      white-space: nowrap;
+    }
+    >input {
+      display: inline-block;
+      height: 72px;
+      width: 100%;
+      background: none;
+      border: none;
+    }
+  }
 `
 const CategorysSection = styled.section`
-
+  font-size: 24px;
+  >ul {
+    display: flex;
+    background: #c4c4c4;
+    >li {
+      flex-grow: 1;
+      text-align: center;
+      padding: 16px 0;
+      position: relative;
+      &.selected::after {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 3px;
+        background: #333;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
 `
 const NumberPad = styled.section`
 
@@ -39,6 +76,8 @@ const NumberPad = styled.section`
 
 function Money() {
   const tags = ['衣', '食', '住', '行']
+  const status = ['支出', '收入']
+  let [selectedIndex, setSelectedIndex] = useState(0)
   return (
     <Layout>
       <TagsSection className="tags">
@@ -54,13 +93,20 @@ function Money() {
       <NotesSection>
         <label>
           <span>备注</span>
-          <input type="text"/>
+          <input type="text" placeholder="在这里添加备注" />
         </label>
       </NotesSection>
       <CategorysSection>
         <ul>
-          <li>支出</li>
-          <li>收入</li>
+          {
+          status.map((st, index) => (
+              <li key={index}
+                className={selectedIndex === index ? 'selected' : ''}
+                onClick={() => { setSelectedIndex(index) }}>{st}
+              </li>
+              )
+            )
+          }
         </ul>
       </CategorysSection>
       <NumberPad>
