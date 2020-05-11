@@ -1,95 +1,24 @@
 import React, { useState } from 'react'
 import Layout from 'views/components/Layout'
 import styled from 'styled-components'
+import { TagsSectionWrapper } from './components/TagsSection'
+import { NumberPad } from './components/NumberPad'
+import { NotesSection } from './components/NotesSection'
+import { CategorysSection } from './components/CategorysSection'
 
-const TagsSection = styled.section`
-  background: #ffffff;
-  padding: 12px 2px;
-  >ol {
-    >li {
-      background: #d9d9d9;
-      border-radius: 18px;
-      display: inline-block;
-      padding: 4px 18px;
-      font-size: 14px;
-      margin: 8px 12px;
-    }
-  }
-  > button {
-    margin-left: 12px;
-    background: none;
-    color: #666;
-    border: none;
-    padding: 2px 4px;
-    border-bottom: 1px solid #333;
-    margin-top: 8px;
-  }
+const MyLayout = styled(Layout)`
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 `
-
-const NotesSection = styled.section`
-  background: #f5f5f5;
-  padding: 0 16px;
-  font-size: 14px;
-  >label {
-    display: flex;
-    align-items: center;
-    >span {
-      margin-right: 16px;
-      white-space: nowrap;
-    }
-    >input {
-      display: inline-block;
-      height: 72px;
-      width: 100%;
-      background: none;
-      border: none;
-    }
-  }
-`
-const CategorysSection = styled.section`
-  font-size: 24px;
-  >ul {
-    display: flex;
-    background: #c4c4c4;
-    >li {
-      flex-grow: 1;
-      text-align: center;
-      padding: 16px 0;
-      position: relative;
-      &.selected::after {
-        content: '';
-        display: block;
-        position: absolute;
-        height: 3px;
-        background: #333;
-        bottom: 0;
-        width: 100%;
-        left: 0;
-      }
-    }
-  }
-`
-const NumberPad = styled.section`
-
-`
-
 
 function Money() {
-  const tags = ['衣', '食', '住', '行']
+  
   const status = ['支出', '收入']
   let [selectedIndex, setSelectedIndex] = useState(0)
   return (
-    <Layout>
-      <TagsSection className="tags">
-        <ol>
-          {
-            tags.map((tag, index) => (
-              <li key={index}>{tag}</li>
-            ))
-          }
-        </ol>
-        <button>新增标签</button>
-      </TagsSection>
+    <MyLayout>
+      <TagsSectionWrapper/ >
       <NotesSection>
         <label>
           <span>备注</span>
@@ -98,34 +27,37 @@ function Money() {
       </NotesSection>
       <CategorysSection>
         <ul>
-          {
-          status.map((st, index) => (
+          { status.map((st, index) => (
               <li key={index}
                 className={selectedIndex === index ? 'selected' : ''}
-                onClick={() => { setSelectedIndex(index) }}>{st}
-              </li>
-              )
-            )
+                onClick={() => { setSelectedIndex(index) }}
+              >{st}</li>
+            ))
           }
         </ul>
       </CategorysSection>
       <NumberPad>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>删除</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>清空</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>OK</button>
-        <button>0</button>
-        <button>.</button>
+        <div className="output">
+          100
+        </div>
+        <div className="pad">
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>删除</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>清空</button>
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button className="ok">OK</button>
+          <button className="zero">0</button>
+          <button>.</button>
+        </div>
       </NumberPad>
-    </Layout>
+    </MyLayout>
   )
 }
 export default Money

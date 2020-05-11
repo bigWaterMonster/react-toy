@@ -17,13 +17,12 @@ type Props = {
   children: any
 }
 
-function Layout(props: Props) {
+function Layout(props: any) {
+  console.log(props.className)
   return (
     <Wrapper>
-      <Main>
-      {
-        props.children
-      }
+      <Main className={props.className}>
+      {props.children}
       </Main>
       <Nav/>
     </Wrapper>
