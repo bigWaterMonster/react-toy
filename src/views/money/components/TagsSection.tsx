@@ -1,4 +1,4 @@
-import React, { Fragment, FC, useState } from "react"
+import React, { FC, useState } from "react"
 import styled from "styled-components"
 
 const TagsSection = styled.section`
@@ -61,21 +61,18 @@ const TagsSectionWrapper: FC = () => {
   }
 
   return (
-    <Fragment>
-      <TagsSection className="tags">
-        <ol>
-          {
-            tags.map((tag, index) => (
-              <li key={index} onClick={() => onToggleTag(tag)}
-              className={getClass(tag)}>{tag}</li>
-            ))
-          }
-        </ol>
-        <button onClick={addTag}>新增标签</button>
-      </TagsSection>
-    </Fragment>
+    <TagsSection className="tags">
+      <ol>
+        {
+          tags.map((tag, index) => (
+            <li key={index} onClick={() => onToggleTag(tag)}
+            className={getClass(tag)}>{tag}</li>
+          ))
+        }
+      </ol>
+      <button onClick={addTag}>新增标签</button>
+    </TagsSection>
   )
-
 }
 
 

@@ -3,7 +3,7 @@ import Layout from 'views/components/Layout'
 import styled from 'styled-components'
 import { TagsSectionWrapper } from './components/TagsSection'
 import { NumberPad } from './components/NumberPad'
-import { NotesSection } from './components/NotesSection'
+import { NotesSectionWrapper } from './components/NotesSection'
 import { CategorysSection } from './components/CategorysSection'
 
 const MyLayout = styled(Layout)`
@@ -13,18 +13,12 @@ const MyLayout = styled(Layout)`
 `
 
 function Money() {
-  
   const status = ['支出', '收入']
   let [selectedIndex, setSelectedIndex] = useState(0)
   return (
     <MyLayout>
-      <TagsSectionWrapper/ >
-      <NotesSection>
-        <label>
-          <span>备注</span>
-          <input type="text" placeholder="在这里添加备注" />
-        </label>
-      </NotesSection>
+      <TagsSectionWrapper />
+      <NotesSectionWrapper />
       <CategorysSection>
         <ul>
           { status.map((st, index) => (
