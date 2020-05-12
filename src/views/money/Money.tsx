@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Layout from 'views/components/Layout'
 import styled from 'styled-components'
 import { TagsSectionWrapper } from './components/TagsSection'
 import { NumberPad } from './components/NumberPad'
 import { NotesSectionWrapper } from './components/NotesSection'
-import { CategorysSection } from './components/CategorysSection'
+import { CategorysSectionWrapper } from './components/CategorysSection'
 
 const MyLayout = styled(Layout)`
   display: flex;
@@ -13,23 +13,11 @@ const MyLayout = styled(Layout)`
 `
 
 function Money() {
-  const status = ['支出', '收入']
-  let [selectedIndex, setSelectedIndex] = useState(0)
   return (
     <MyLayout>
       <TagsSectionWrapper />
       <NotesSectionWrapper />
-      <CategorysSection>
-        <ul>
-          { status.map((st, index) => (
-              <li key={index}
-                className={selectedIndex === index ? 'selected' : ''}
-                onClick={() => { setSelectedIndex(index) }}
-              >{st}</li>
-            ))
-          }
-        </ul>
-      </CategorysSection>
+      <CategorysSectionWrapper/>
       <NumberPad>
         <div className="output">
           100

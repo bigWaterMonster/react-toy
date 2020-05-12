@@ -25,7 +25,6 @@ const NotesSectionWrapper: FC = () => {
   const [note, setNote] = useState<string>('')
   const refInput = useRef<HTMLInputElement>(null)
   const onBlur = function () {
-    console.log(refInput.current)
     if (refInput.current !== null) {
       setNote(refInput.current.value)
     }
@@ -43,6 +42,5 @@ const NotesSectionWrapper: FC = () => {
     </NotesSection>
   )
 }
-
 
 export { NotesSectionWrapper }

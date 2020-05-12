@@ -18,7 +18,6 @@ type Props = {
 }
 
 function Layout(props: any) {
-  console.log(props.className)
   return (
     <Wrapper>
       <Main className={props.className}>

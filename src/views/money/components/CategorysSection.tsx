@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React, { FC, useState } from "react";
 
 const CategorysSection = styled.section`
   font-size: 24px;
@@ -23,4 +24,23 @@ const CategorysSection = styled.section`
     }
   }
 `
-export { CategorysSection }
+
+const CategorysSectionWrapper: FC = function() {
+  const [status] = useState(['支出', '收入'])
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  return (
+    <CategorysSection>
+      <ul>
+        { status.map((st, index) => (
+            <li key={index}
+              className={selectedIndex === index ? 'selected' : ''}
+              onClick={() => { setSelectedIndex(index) }}
+            >{st}</li>
+          ))
+        }
+      </ul>
+    </CategorysSection>
+  )
+}
+
+export { CategorysSectionWrapper }
