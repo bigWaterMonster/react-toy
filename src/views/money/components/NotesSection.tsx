@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { FC, useState, useRef } from 'react'
+import React, { FC, useRef } from 'react'
 
 const NotesSection = styled.section`
   background: #f5f5f5;
@@ -21,12 +21,18 @@ const NotesSection = styled.section`
     }
   }
 `
-const NotesSectionWrapper: FC = () => {
-  const [note, setNote] = useState<string>('')
+
+type Props = {
+  value: string
+  onChange: (value: string) => void
+}
+
+const NotesSectionWrapper: FC<Props> = (props) => {
+  const note = props.value
   const refInput = useRef<HTMLInputElement>(null)
   const onBlur = function () {
     if (refInput.current !== null) {
-      setNote(refInput.current.value)
+      props.onChange(refInput.current.value)
     }
   }
   // 受控组件

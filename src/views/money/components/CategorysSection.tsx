@@ -25,16 +25,21 @@ const CategorysSection = styled.section`
   }
 `
 
-const CategorysSectionWrapper: FC = function() {
-  const [status] = useState(['支出', '收入'])
-  const [selectedIndex, setSelectedIndex] = useState(0)
+type Props = {
+  value: number,
+  onChange: (tags: number) => void
+}
+
+const CategorysSectionWrapper: FC<Props> = function(props) {
+  const [status] = useState<string[]>(['支出', '收入'])
+  const selectedIndex = props.value
   return (
     <CategorysSection>
       <ul>
         { status.map((st, index) => (
             <li key={index}
               className={selectedIndex === index ? 'selected' : ''}
-              onClick={() => { setSelectedIndex(index) }}
+              onClick={() => { props.onChange(index) }}
             >{st}</li>
           ))
         }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from 'views/components/Layout'
 import styled from 'styled-components'
 import { TagsSectionWrapper } from './components/TagsSection'
@@ -13,12 +13,38 @@ const MyLayout = styled(Layout)`
 `
 
 function Money() {
+  const [selected, setSelected] = useState(
+    {
+      tags: [] as string[],
+      note: '',
+      category: 0,
+      amount: 0
+    }
+  )
   return (
     <MyLayout>
-      <TagsSectionWrapper />
-      <NotesSectionWrapper />
-      <CategorysSectionWrapper/>
-      <NumberPadWrapper />
+      <TagsSectionWrapper value={selected.tags} onChange={(tags) => setSelected({
+        ...selected,
+        tags
+      })}/>
+      <NotesSectionWrapper value={selected.note} onChange={(note) => {
+        setSelected({
+          ...selected,
+          note
+        })
+      }}/>
+      <CategorysSectionWrapper value={selected.category} onChange={(category) => {
+        setSelected({
+          ...selected,
+          category
+        })
+      }}/>
+      <NumberPadWrapper value={selected.amount} onChange={(amount) => {
+        setSelected({
+          ...selected,
+          amount
+        })
+      }}/>
     </MyLayout>
   )
 }

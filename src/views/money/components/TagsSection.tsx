@@ -35,9 +35,14 @@ const TagsSection = styled.section`
   }
 `
 
-const TagsSectionWrapper: FC = () => {
+type Props = {
+  value: string[],
+  onChange: (tags: string[]) => void
+}
+
+const TagsSectionWrapper: FC<Props> = (props) => {
+  const selectedTags = props.value
   const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行'])
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
   // 添加tag
   const addTag = () => {
     const newTagName = window.prompt('新标签名称为')
@@ -49,10 +54,9 @@ const TagsSectionWrapper: FC = () => {
   const onToggleTag = (tag: string) => {
     const isInclude = ~selectedTags.indexOf(tag)
     if (isInclude) {
-      console.log('包含')
-      setSelectedTags(selectedTags.filter(t => t !== tag))
+      props.onChange(selectedTags.filter(t => t !== tag))
     } else {
-      setSelectedTags([...selectedTags, tag])
+      props.onChange([...selectedTags, tag])
     }
   }
   // 确认是否选中
@@ -74,6 +78,5 @@ const TagsSectionWrapper: FC = () => {
     </TagsSection>
   )
 }
-
 
 export { TagsSectionWrapper }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 
 const NumberPad = styled.section`
   display: flex;
@@ -51,8 +51,19 @@ const NumberPad = styled.section`
   }
 `
 
-const NumberPadWrapper: FC = function() {
-  const [output, setOutput] = useState('0')
+type Props =  {
+  value: number;
+  onChange: (value: number) => void
+  onOk? : () => void
+}
+
+const NumberPadWrapper: FC<Props> = function(props) {
+  const output = props.value.toString()
+  // const [output, _setOutput] = useState('0')
+  const setOutput = (output: string) => {
+    if (output.length <= 16) props.onChange(parseFloat(output))
+    else props.onChange(0)
+  }
   const onClickNumber = function(e: React.MouseEvent) {
     const text = (e.target as HTMLButtonElement).textContent
     if (text === null) return
@@ -74,17 +85,26 @@ const NumberPadWrapper: FC = function() {
         }
         break
       case '.':
-        console.log('.')
+        console.log(text)
+        if (!~output.indexOf('.')) setOutput(output + text)
         break
       case '清空':
         setOutput('0')
         break
       case '删除':
-        console.log('删除')
+        if (output.length === 1) {
+          setOutput('0')
+        } else {
+          setOutput(output.slice(0, -1))
+        }
         break
       case 'OK':
-        console.log('OK')
+        if (props.onOk) {
+          props.onOk()
+        }
         break
+      default:
+        return '0'
     }
   }
   return (
@@ -111,7 +131,5 @@ const NumberPadWrapper: FC = function() {
     </NumberPad>
   )
 }
-
-
 
 export { NumberPadWrapper }
