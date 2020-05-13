@@ -47,9 +47,9 @@ function Labels() {
     <Layout>
       <TagList>
         {tags.map(tag =>
-          <Link to={"/tags/" + tag} key={tag} className="clearfix">
+          <Link to={"/tags/" + tag.id} key={tag.id} className="clearfix">
             <li >
-              <span className="oneLine">{tag}</span>
+              <span className="oneLine">{tag.name}</span>
               <SvgIcon name="arrowRight" />
             </li>
           </Link>

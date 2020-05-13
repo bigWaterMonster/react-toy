@@ -16,13 +16,11 @@ function App() {
     <Router>
       <AppWrapper>
         <Switch>
-          <Route exact path="/labels" component={Labels}>
-          </Route>
+          <Route exact path="/labels" component={Labels} />
           <Route exact path="/tags/:tag">
             <TagEdit />
           </Route>
-          <Route exact path="/money" render={() => <Money />} >
-          </Route>
+          <Route exact path="/money" render={() => <Money />} />
           <Route exact path="/statistics">
             <Statistics />
           </Route>

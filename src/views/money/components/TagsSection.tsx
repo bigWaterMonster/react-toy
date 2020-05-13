@@ -37,32 +37,32 @@ const TagsSection = styled.section`
 `
 
 type Props = {
-  value: string[],
-  onChange: (tags: string[]) => void
+  value: number[],
+  onChange: (tags: number[]) => void
 }
 
 const TagsSectionWrapper: FC<Props> = (props) => {
-  const selectedTags = props.value
+  const selectedTagsIds = props.value
   const { setTags, tags } = useTags()
   // 添加tag
   const addTag = () => {
     const newTagName = window.prompt('新标签名称为')
     if (newTagName !== null) {
-      setTags([...tags, newTagName])
+      setTags([...tags, { id: Math.random() * 100, name: newTagName }])
     }
   }
   // 选中了哪些tags
-  const onToggleTag = (tag: string) => {
-    const isInclude = ~selectedTags.indexOf(tag)
+  const onToggleTag = (tagId: number) => {
+    const isInclude = ~selectedTagsIds.indexOf(tagId)
     if (isInclude) {
-      props.onChange(selectedTags.filter(t => t !== tag))
+      props.onChange(selectedTagsIds.filter(t => t !== tagId))
     } else {
-      props.onChange([...selectedTags, tag])
+      props.onChange([...selectedTagsIds, tagId])
     }
   }
   // 确认是否选中
-  const getClass = (tag: string) => {
-    return ~selectedTags.indexOf(tag) ? 'selected' : ''
+  const getClass = (tagId: number) => {
+    return ~selectedTagsIds.indexOf(tagId) ? 'selected' : ''
   }
 
   return (
@@ -70,8 +70,8 @@ const TagsSectionWrapper: FC<Props> = (props) => {
       <ol>
         {
           tags.map((tag, index) => (
-            <li key={index} onClick={() => onToggleTag(tag)}
-              className={getClass(tag)}>{tag}</li>
+            <li key={index} onClick={() => onToggleTag(tag.id)}
+              className={getClass(tag.id)}>{tag.name}</li>
           ))
         }
       </ol>
