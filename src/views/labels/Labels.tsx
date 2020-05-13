@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import Layout from 'views/components/Layout'
 import { useTags } from '../components/useTags'
 import styled from 'styled-components'
 import SvgIcon from '../components/SvgIcon'
 import { Link } from 'react-router-dom'
+import { Button } from '../components/Button'
 
 const TagList = styled.ol`
   font-size: 16px;
@@ -21,16 +22,6 @@ const TagList = styled.ol`
   }
 `
 
-const Button = styled.button`
-  font-size: 18px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  background: #767676;
-  color: white;
-  cursor: pointer;
-`
-
 const Center = styled.div`
   display: flex;
   justify-content: center;
@@ -41,14 +32,14 @@ const Space = styled.div`
   height: 16px;
 `
 
-function Labels() {
-  const { setTags, tags } = useTags()
+const Labels: FC = () => {
+  const { tags } = useTags()
   return (
     <Layout>
       <TagList>
         {tags.map(tag =>
           <Link to={"/tags/" + tag.id} key={tag.id} className="clearfix">
-            <li >
+            <li>
               <span className="oneLine">{tag.name}</span>
               <SvgIcon name="arrowRight" />
             </li>

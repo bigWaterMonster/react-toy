@@ -34,19 +34,19 @@ function Nav() {
       <ul>
         <li>
           <NavLink to="/money" activeClassName="active">
-            <SvgIcon name="money"/>
+            <SvgIcon name="money" />
             <p>记账</p>
           </NavLink>
         </li>
         <li>
           <NavLink to="/labels" activeClassName="active">
-            <SvgIcon name="tag"/>
+            <SvgIcon name="tag" />
             <p>标签</p>
           </NavLink>
         </li>
         <li>
           <NavLink to="/statistics" activeClassName="active">
-            <SvgIcon name="statistics"/>
+            <SvgIcon name="statistics" />
             <p>统计</p>
           </NavLink>
         </li>
