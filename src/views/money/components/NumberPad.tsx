@@ -54,12 +54,11 @@ const NumberPad = styled.section`
 type Props =  {
   value: number;
   onChange: (value: number) => void
-  onOk? : () => void
+  onOk?: () => void
 }
 
 const NumberPadWrapper: FC<Props> = function(props) {
   const output = props.value.toString()
-  // const [output, _setOutput] = useState('0')
   const setOutput = (output: string) => {
     if (output.length <= 16) props.onChange(parseFloat(output))
     else props.onChange(0)

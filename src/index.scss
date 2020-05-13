@@ -47,3 +47,9 @@ button {
   clear: both;
   display: block;
 }
+
+.oneLine {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

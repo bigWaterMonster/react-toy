@@ -24,7 +24,7 @@ function Money() {
 
   type Selected = typeof selected
 
-  const onChange = (obj: Partial<Selected>) =>{
+  const onChange = (obj: Partial<Selected>) => {
     setSelected({
       ...selected,
       ...obj
@@ -35,8 +35,9 @@ function Money() {
     <MyLayout>
       <TagsSectionWrapper value={selected.tags} onChange={(tags) => onChange({tags})}/>
       <NotesSectionWrapper value={selected.note} onChange={(note) => onChange({note})}/>
-      <CategorysSectionWrapper value={selected.category} onChange={(category) => onChange({category})
-      }/>
+      <CategorysSectionWrapper value={selected.category}
+        onChange={(category) => onChange({category})}
+      />
       <NumberPadWrapper value={selected.amount} onChange={(amount) => {onChange({amount})}}/>
     </MyLayout>
   )
