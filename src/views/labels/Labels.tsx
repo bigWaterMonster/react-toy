@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import SvgIcon from '../components/SvgIcon'
 import { Link } from 'react-router-dom'
 import { Button } from '../components/Button'
+import { Center } from 'views/components/Center'
+import { Space } from 'views/components/Space'
 
 const TagList = styled.ol`
   font-size: 16px;
@@ -22,15 +24,7 @@ const TagList = styled.ol`
   }
 `
 
-const Center = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
 
-const Space = styled.div`
-  height: 16px;
-`
 
 const Labels: FC = () => {
   const { tags } = useTags()

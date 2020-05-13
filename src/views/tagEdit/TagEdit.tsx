@@ -6,6 +6,8 @@ import SvgIcon from 'views/components/SvgIcon'
 import { Button } from 'views/components/Button'
 import styled from 'styled-components'
 import { Input } from 'views/components/Input'
+import { Center } from 'views/components/Center'
+import { Space } from 'views/components/Space'
 
 type RouterParams = { id: string }
 
@@ -20,8 +22,13 @@ const TopBar = styled.header`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
   }
+`
+
+const InputWrapper = styled.div`
+  margin-top: 8px;
+  background: white;
+  padding: 0px 16px;
 `
 
 function TagEdit() {
@@ -36,8 +43,15 @@ function TagEdit() {
       </TopBar>
       <div>
         {tag && tag.name}
-        <Input label="标签" />
-        <Button>删除标签</Button>
+        <InputWrapper>
+          <Input label="标签" type="text" placeholder="标签名" />
+        </InputWrapper>
+        <Space />
+        <Space />
+        <Space />
+        <Center>
+          <Button>删除标签</Button>
+        </Center>
       </div>
     </Layout>
   )

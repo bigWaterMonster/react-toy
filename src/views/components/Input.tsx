@@ -11,7 +11,7 @@ const Label = styled.label`
   }
   >input {
     display: inline-block;
-    height: 72px;
+    height: 44px;
     width: 100%;
     background: none;
     border: none;
