@@ -5,6 +5,7 @@ import Labels from './views/labels/Labels'
 import Statistics from './views/statistics/Statistics'
 import NoMatch from './views/NoMatch'
 import styled from "styled-components";
+import TagEdit from "views/tagEdit/TagEdit";
 
 const AppWrapper = styled.div`
   color: #333;
@@ -16,6 +17,9 @@ function App() {
       <AppWrapper>
         <Switch>
           <Route exact path="/labels" component={Labels}>
+          </Route>
+          <Route exact path="/tags/:tag">
+            <TagEdit />
           </Route>
           <Route exact path="/money" render={() => <Money />} >
           </Route>
