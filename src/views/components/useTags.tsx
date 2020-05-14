@@ -11,7 +11,20 @@ const defaultTags = [
 const useTags = () => {
   const [tags, setTags] = useState<{ id: number, name: string }[]>(defaultTags)
   const findTag = (id: number) => tags.find(tag => tag.id === id)
-  return { tags, setTags, findTag }
+  const findTagIndex = (id: number) => tags.findIndex(tag => tag.id === id)
+  const updateTag = function (id: number, name: string) {
+    const index = findTagIndex(id)
+    let newTags = [...tags]
+    newTags[index].name = name
+    setTags(newTags)
+  }
+  const deleteTag = function (id: number) {
+    const index = findTagIndex(id)
+    let newTags = [...tags]
+    newTags.splice(index, 1)
+    setTags(newTags)
+  }
+  return { tags, setTags, findTag, findTagIndex, updateTag, deleteTag }
 }
 
 export { useTags }

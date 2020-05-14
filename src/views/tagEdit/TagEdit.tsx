@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEventHandler } from 'react'
 import { useParams } from 'react-router-dom'
 import { useTags } from 'views/components/useTags'
 import Layout from 'views/components/Layout'
@@ -32,27 +32,34 @@ const InputWrapper = styled.div`
 `
 
 function TagEdit() {
-  const { findTag } = useTags()
+  const { findTag, updateTag, deleteTag } = useTags()
   const { id } = useParams<RouterParams>()
   const tag = findTag(Number(id))
+
+  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    updateTag(tag!.id, e.target.value)
+  }
   return (
     <Layout>
       <TopBar>
         <SvgIcon name="arrowLeft" />
         <span>编辑标签</span>
       </TopBar>
-      <div>
-        {tag && tag.name}
-        <InputWrapper>
-          <Input label="标签" type="text" placeholder="标签名" />
-        </InputWrapper>
-        <Space />
-        <Space />
-        <Space />
-        <Center>
-          <Button>删除标签</Button>
-        </Center>
-      </div>
+      {
+        tag ? <div>
+          <InputWrapper>
+            <Input label="标签" type="text" placeholder="标签名" value={tag.name} onChange={onChange} />
+          </InputWrapper>
+          <Space />
+          <Space />
+          <Space />
+          <Center>
+            <Button onClick={() => { deleteTag(tag.id) }}>删除标签</Button>
+          </Center>
+        </div>
+          :
+          <Center>不存在了</Center>
+      }
     </Layout>
   )
 }
