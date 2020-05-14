@@ -1,5 +1,5 @@
 import React, { ChangeEventHandler } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { useTags } from 'views/components/useTags'
 import Layout from 'views/components/Layout'
 import SvgIcon from 'views/components/SvgIcon'
@@ -39,10 +39,17 @@ function TagEdit() {
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     updateTag(tag!.id, e.target.value)
   }
+
+  const history = useHistory()
+
+  const goBack = function () {
+    history.goBack()
+  }
+
   return (
     <Layout>
       <TopBar>
-        <SvgIcon name="arrowLeft" />
+        <SvgIcon name="arrowLeft" onClick={goBack} />
         <span>编辑标签</span>
       </TopBar>
       {

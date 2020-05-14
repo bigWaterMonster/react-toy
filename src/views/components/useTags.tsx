@@ -13,16 +13,10 @@ const useTags = () => {
   const findTag = (id: number) => tags.find(tag => tag.id === id)
   const findTagIndex = (id: number) => tags.findIndex(tag => tag.id === id)
   const updateTag = function (id: number, name: string) {
-    const index = findTagIndex(id)
-    let newTags = [...tags]
-    newTags[index].name = name
-    setTags(newTags)
+    setTags(tags.map((tag) => tag.id !== id ? tag : ({ name, id })))
   }
   const deleteTag = function (id: number) {
-    const index = findTagIndex(id)
-    let newTags = [...tags]
-    newTags.splice(index, 1)
-    setTags(newTags)
+    setTags(tags.filter((tag) => tag.id !== id))
   }
   return { tags, setTags, findTag, findTagIndex, updateTag, deleteTag }
 }
