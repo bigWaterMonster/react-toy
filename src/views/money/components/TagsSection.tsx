@@ -1,7 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { useTags } from "views/components/useTags"
-import { createId } from 'lib/createId'
 
 const TagsSection = styled.section`
   background: #ffffff;
@@ -44,14 +43,7 @@ type Props = {
 
 const TagsSectionWrapper: FC<Props> = (props) => {
   const selectedTagsIds = props.value
-  const { setTags, tags } = useTags()
-  // 添加tag
-  const addTag = () => {
-    const newTagName = window.prompt('新标签名称为')
-    if (newTagName !== null) {
-      setTags([...tags, { id: createId(), name: newTagName }])
-    }
-  }
+  const { tags, addTag } = useTags()
   // 选中了哪些tags
   const onToggleTag = (tagId: number) => {
     const isInclude = ~selectedTagsIds.indexOf(tagId)

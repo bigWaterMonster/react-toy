@@ -5,4 +5,8 @@ const createId = (): number => {
   return id
 }
 
-export { createId }
+const initId = (initValue: number) => {
+  id = initValue
+}
+
+export { createId, initId }
