@@ -5,6 +5,7 @@ import { TagsSectionWrapper } from './components/TagsSection'
 import { NumberPadWrapper } from './components/NumberPad'
 import { NotesSectionWrapper } from './components/NotesSection'
 import { CategorysSectionWrapper } from './components/CategorysSection'
+import { useRecords } from 'views/hooks/useRecords'
 
 const MyLayout = styled(Layout)`
   display: flex;
@@ -12,15 +13,17 @@ const MyLayout = styled(Layout)`
   overflow: hidden;
 `
 
+const defaultForm = {
+  tags: [] as number[],
+  note: '',
+  category: 0,
+  amount: 0,
+}
+
+
 function Money() {
-  const [selected, setSelected] = useState(
-    {
-      tags: [] as number[],
-      note: '',
-      category: 0,
-      amount: 0
-    }
-  )
+  const [selected, setSelected] = useState(defaultForm)
+  const { addRecord } = useRecords()
 
   type Selected = typeof selected
 
@@ -30,7 +33,11 @@ function Money() {
       ...obj
     })
   }
-
+  const onSubmit = () => {
+    addRecord(selected)
+    window.alert('保存成功')
+    setSelected(defaultForm)
+  }
   return (
     <MyLayout>
       <TagsSectionWrapper value={selected.tags} onChange={(tags) => onChange({ tags })} />
@@ -38,7 +45,7 @@ function Money() {
       <CategorysSectionWrapper value={selected.category}
         onChange={(category) => onChange({ category })}
       />
-      <NumberPadWrapper value={selected.amount} onChange={(amount) => { onChange({ amount }) }} />
+      <NumberPadWrapper value={selected.amount} onChange={(amount) => { onChange({ amount }) }} onOk={onSubmit} />
     </MyLayout>
   )
 }

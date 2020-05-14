@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
-import { useTags } from 'views/components/useTags'
+import { useTags } from 'views/hooks/useTags'
 import Layout from 'views/components/Layout'
 import SvgIcon from 'views/components/SvgIcon'
 import { Button } from 'views/components/Button'

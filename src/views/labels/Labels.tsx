@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Layout from 'views/components/Layout'
-import { useTags } from '../components/useTags'
+import { useTags } from '../hooks/useTags'
 import styled from 'styled-components'
 import SvgIcon from '../components/SvgIcon'
 import { Link } from 'react-router-dom'

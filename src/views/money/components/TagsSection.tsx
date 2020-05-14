@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { useTags } from "views/components/useTags"
+import { useTags } from "views/hooks/useTags"
 
 const TagsSection = styled.section`
   background: #ffffff;
