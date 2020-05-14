@@ -4,7 +4,7 @@ type RecordItem = {
   tags: number[]
   note: string
   category: number
-  amount: number
+  amount: string
   createTime?: string
 }
 //  Omit<RecordItem, 'createTime' | ''>
@@ -17,7 +17,8 @@ export const useRecords = () => {
   let initialRecords = useRef(getRecords())
   const [records, setRecords] = useState<RecordItem[]>(initialRecords.current)
   const addRecord = (record: RecordItem) => {
-    record = { ...record, createTime: new Date().toISOString() }
+    let amount = record.amount.slice(-1) === '.' ? record.amount.slice(0, -1) : record.amount
+    record = { ...record, createTime: new Date().toISOString(), amount }
     setRecords([...records, record])
   }
   useEffect(() => {

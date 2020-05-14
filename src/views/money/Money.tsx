@@ -17,7 +17,7 @@ const defaultForm = {
   tags: [] as number[],
   note: '',
   category: 0,
-  amount: 0,
+  amount: '0',
 }
 
 

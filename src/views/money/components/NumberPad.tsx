@@ -51,19 +51,19 @@ const NumberPad = styled.section`
   }
 `
 
-type Props =  {
-  value: number;
-  onChange: (value: number) => void
+type Props = {
+  value: string;
+  onChange: (value: string) => void
   onOk?: () => void
 }
 
-const NumberPadWrapper: FC<Props> = function(props) {
+const NumberPadWrapper: FC<Props> = function (props) {
   const output = props.value.toString()
   const setOutput = (output: string) => {
-    if (output.length <= 16) props.onChange(parseFloat(output))
-    else props.onChange(0)
+    if (output.length <= 16) props.onChange(output)
+    else props.onChange('0')
   }
-  const onClickNumber = function(e: React.MouseEvent) {
+  const onClickNumber = function (e: React.MouseEvent) {
     const text = (e.target as HTMLButtonElement).textContent
     if (text === null) return
     switch (text) {
@@ -84,7 +84,6 @@ const NumberPadWrapper: FC<Props> = function(props) {
         }
         break
       case '.':
-        console.log(text)
         if (!~output.indexOf('.')) setOutput(output + text)
         break
       case '清空':
