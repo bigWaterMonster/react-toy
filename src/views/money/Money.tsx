@@ -13,6 +13,10 @@ const MyLayout = styled(Layout)`
   overflow: hidden;
 `
 
+const CategorysWrapper = styled.div`
+  background: #c4c4c4;
+`
+
 const defaultForm = {
   tags: [] as number[],
   note: '',
@@ -42,9 +46,11 @@ function Money() {
     <MyLayout>
       <TagsSectionWrapper value={selected.tags} onChange={(tags) => onChange({ tags })} />
       <NotesSectionWrapper value={selected.note} onChange={(note) => onChange({ note })} />
-      <CategorysSectionWrapper value={selected.category}
-        onChange={(category) => onChange({ category })}
-      />
+      <CategorysWrapper >
+        <CategorysSectionWrapper value={selected.category}
+          onChange={(category) => onChange({ category })}
+        />
+      </CategorysWrapper>
       <NumberPadWrapper value={selected.amount} onChange={(amount) => { onChange({ amount }) }} onOk={onSubmit} />
     </MyLayout>
   )

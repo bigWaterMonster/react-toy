@@ -5,7 +5,6 @@ const CategorysSection = styled.section`
   font-size: 24px;
   >ul {
     display: flex;
-    background: #c4c4c4;
     >li {
       flex-grow: 1;
       text-align: center;
@@ -30,18 +29,18 @@ type Props = {
   onChange: (tags: number) => void
 }
 
-const CategorysSectionWrapper: FC<Props> = function(props) {
+const CategorysSectionWrapper: FC<Props> = function (props) {
   const [status] = useState<string[]>(['支出', '收入'])
   const selectedIndex = props.value
   return (
     <CategorysSection>
       <ul>
-        { status.map((st, index) => (
-            <li key={index}
-              className={selectedIndex === index ? 'selected' : ''}
-              onClick={() => { props.onChange(index) }}
-            >{st}</li>
-          ))
+        {status.map((st, index) => (
+          <li key={index}
+            className={selectedIndex === index ? 'selected' : ''}
+            onClick={() => { props.onChange(index) }}
+          >{st}</li>
+        ))
         }
       </ul>
     </CategorysSection>

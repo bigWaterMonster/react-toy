@@ -21,9 +21,9 @@ function Layout(props: any) {
   return (
     <Wrapper>
       <Main className={props.className}>
-      {props.children}
+        {props.children}
       </Main>
-      <Nav/>
+      <Nav />
     </Wrapper>
   )
 }

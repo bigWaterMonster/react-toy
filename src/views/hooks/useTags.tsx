@@ -40,7 +40,10 @@ const useTags = () => {
       setTags([...tags, { id: createId(), name: newTagName }])
     }
   }
-  return { tags, setTags, findTag, findTagIndex, updateTag, deleteTag, addTag }
+  const getName = (id: number) => {
+    return findTag(id)
+  }
+  return { tags, setTags, findTag, findTagIndex, updateTag, deleteTag, addTag, getName }
 }
 
 export { useTags }
