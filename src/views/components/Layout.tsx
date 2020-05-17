@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from "styled-components";
 import Nav from './Nav';
 
@@ -13,11 +13,7 @@ const Main = styled.div`
   overflow: auto;
 `
 
-type Props = {
-  children: any
-}
-
-function Layout(props: any) {
+const Layout: FC = (props: any) => {
   return (
     <Wrapper>
       <Main className={props.className}>
@@ -26,6 +22,10 @@ function Layout(props: any) {
       <Nav />
     </Wrapper>
   )
+}
+
+Layout.defaultProps = {
+  scrollTop: 0
 }
 
 export default Layout

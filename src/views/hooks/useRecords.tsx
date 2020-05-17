@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-type RecordItem = {
+export type RecordItem = {
   tags: number[]
   note: string
   category: number

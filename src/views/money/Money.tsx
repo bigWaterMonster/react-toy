@@ -38,6 +38,10 @@ function Money() {
     })
   }
   const onSubmit = () => {
+    if (!selected.tags.length) {
+      window.alert('请选择至少一个标签')
+      return
+    }
     addRecord(selected)
     window.alert('保存成功')
     setSelected(defaultForm)
